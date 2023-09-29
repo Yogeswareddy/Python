@@ -1,0 +1,44 @@
+import random
+import time
+
+# Sample sentences for the typing test
+sentences = [
+    "The quick brown fox jumps over the lazy dog.",
+    "Python is a high-level programming language.",
+    "Practice makes perfect.",
+    "Coding is fun!",
+    "Keep calm and code on."
+]
+
+def get_random_sentence():
+    return random.choice(sentences)
+
+def calculate_typing_speed(start_time, end_time, input_text):
+    words = input_text.split()
+    elapsed_time = end_time - start_time
+    minutes = elapsed_time / 60.0
+    words_per_minute = len(words) / minutes
+    return words_per_minute
+
+def main():
+    print("Welcome to the Speed Typing Test!")
+    input("Press Enter to start...")
+
+    sentence = get_random_sentence()
+    print("\nType the following sentence:")
+    print(sentence)
+
+    input("Press Enter when you are ready to start typing...")
+
+    start_time = time.time()
+
+    user_input = input("Start typing: ")
+
+    end_time = time.time()
+
+    words_per_minute = calculate_typing_speed(start_time, end_time, user_input)
+
+    print(f"\nYour typing speed: {words_per_minute:.2f} words per minute")
+
+if __name__ == "__main__":
+    main()
